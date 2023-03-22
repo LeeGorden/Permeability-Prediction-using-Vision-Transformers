@@ -1,3 +1,7 @@
+"""
+Author : LiGorden
+Email: likehao1006@gmail.com
+"""
 from logzero import logger
 import sys
 

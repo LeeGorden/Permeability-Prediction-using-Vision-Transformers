@@ -1,6 +1,9 @@
 """
 original code from rwightman:
 https://github.com/rwightman/pytorch-image-models/blob/master/timm/models/vision_transformer.py
+
+enriched by : LiGorden
+Email: likehao1006@gmail.com
 """
 from functools import partial
 from collections import OrderedDict
