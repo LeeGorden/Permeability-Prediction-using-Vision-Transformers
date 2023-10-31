@@ -1,54 +1,50 @@
 <br>
 
-## <div align="center">**PoreFlow**</div>
+## <div align="center">**Permeability Prediction using Vision Transformers**</div>
 
 <details open>
 <summary>Introduction</summary>
   
-As the applications of ML algorithms in real life become increasingly common, ethical issues of AI solutions emerge especially in a sensitive human-related field such as the medical care industry. The output of the responsible AI framework proposed are images demonstrated to be in both high accuracy and high interpretability in field experiments with accuracy higher than 90% by prediction based on bare human eyes. More importantly, the images generated under the responsible framework enable experts in the field of mental health to diagnose mental disorders even if they do not know ML algorithms.
+Accurate permeability prediction remains pivotal in understanding fluid flow in porous media, influencing crucial operations across petroleum engineering, hydrogeology, and related fields. Traditional approaches, while robust, often grapple with the inherent heterogeneity of reservoir rocks. With the advent of deep learning, Convolutional Neural Networks (CNNs) have emerged as potent tools in image-based permeability estimation, capitalizing on micro-CT scans and digital rock imagery. This paper introduces a novel paradigm, employing Vision Transformers (ViTs) - a recent advancement in computer vision - for this crucial task. ViTs, which segment images into fixed-sized patches and process them through transformer architectures, present a promising alternative to CNNs. We present a methodology for implementing ViTs for permeability prediction, results from diverse rock samples, and a comparison against conventional CNNs. The prediction results suggest that, with adequate training data, ViTs can      match or surpass the predictive accuracy of CNNs, especially in rocks exhibiting significant heterogeneity. This study underscores the potential of Vision Transformers as an innovative tool in permeability prediction, paving the way for further research and integration into mainstream reservoir characterization workflows.
 
 <details open>
-<summary>Responsibility of the research</summary>
-  
-**Salih Tutun:** Project owner. Providing and gathering original data; leading and indicating the design of the research.
-  
-**Gorden Li(Kehao Li)**: Head research assistant, responsible of implementing alogirithms and writing codes to achieve the design of Professor Salih Tutun.
-  
-**Yuxiang Wu**: Research assistant, assist head research assistant.
+<summary>Dataset preparetion</summary>
 
-</details>
-  
+Features used to characterize the geometry of the void space are studied to predict permeability. These features include single phase mfp, electrical properties elec_uz, and geometric properties like MIS_3D, e_domain, tOf_L, tOf_R.   Each of the 6 features has a dimension of 256 × 256 × 256. Then, these 6 features are concatenated into a six-channel 3D cube as data input, shown as follows.
+
+![image](https://github.com/LeeGorden/PoreFlow/assets/72702872/57295728-3adb-4629-8ade-d1cf7f23b181)
+
 </details>
 
 <details open>
-<summary>Result</summary>
+<summary>Proposed framework for predicting permeability</summary>
+  
+In the model structure section, the encoder of Swin Transformer proposed by Liu, Z. et al., (2021) is chosen. The encoder of Swin Transformer is chosen because traditional transformer has limitations regarding the length of sequences, in this case the number of 3D points in the 3D cube, especially when considering the resources consumption will increase significantly when object dimension increases from 2D to 3D. The idea of using successive window and shifted-window successively to aggregate self-attention-based information instead of global self-attention-based information aggregation is the core of reducing complexity.
 
-- Image created under the framework:
+The Swin Transformer Encoder backbone has been applied in solving 3D object detection, segmentation, and classification. (Cao, H.  et al. 2022; Tang, Y. et al. 2022; Hatamizadeh, A. et al. 2022). We inherit the encoder structure of 3D Medical Image Segmentation conducted by Hatamizadeh, A. et al. (2022), as shown in the following figure. We use the patch size of  8 × 8 × 8 instead of the original patch size of 4 × 4 × 4 in order to absorb more diverse geological information.
   
-  Based on responsible AI using CNN model trained, interpretation of pixels towards each mental disorder is as follows:
+![image](https://github.com/LeeGorden/PoreFlow/assets/72702872/fbf7d647-95b9-4064-8e92-2a404b15b84c)
+
+</details>
   
-  ![image](https://user-images.githubusercontent.com/72702872/169706263-d93dc434-b556-4523-98e6-64d41ec2c762.png)
+</details>
+
+<details open>
+<summary>Experiment result</summary>
+
+- Model performance:
   
-  ![image](https://user-images.githubusercontent.com/72702872/198496708-72a97364-abd5-46a9-a798-383c6e3dc0ef.png)
-  
-  Combining responsible AI, final images are as follows:
-  
-  ![image](https://user-images.githubusercontent.com/72702872/198496992-102a90d4-a31d-485a-9366-0fe748cca8f9.png)
-  
-  Each image represents a patient, and it is split into different areas. Those areas express different mental disorders. **The darker the pixels are within certain area, the higher the possibility that the patient will have corresponding mental disorder.**
+  ![image](https://github.com/LeeGorden/PoreFlow/assets/72702872/05d700ce-d1c4-4f12-9f5d-275daffd8c33)
+
+- Ablation analysis:
+
+  ![image](https://github.com/LeeGorden/PoreFlow/assets/72702872/4275aa67-aee1-4463-8a45-48c204b4d763)
+
 
 </details>
 
 </details>
 
 </details>
-
-## <div align="center">Contact</div>
-
-email: likehao1006@gmail.com
-
-LinkedIn: https://www.linkedin.com/in/kehao-li-06a9a2235/
-
-ResearchGate: https://www.researchgate.net/profile/Gorden-Li
 
 <br>
