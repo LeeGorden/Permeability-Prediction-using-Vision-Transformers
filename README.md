@@ -83,6 +83,6 @@ The Swin Transformer Encoder backbone has been applied in solving 3D object dete
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GitHub: <a href="https://github.com/LeeGorden">@Kehao Li</a> <br>
 
   <b>Javier E.Santos</b> <br>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GitHub: <a href="https://github.com/je-santos"@Javier E.Santos</a> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GitHub: <a href="https://github.com/je-santos">@Javier E.Santos</a> <br>
 
 <br>
