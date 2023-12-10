@@ -47,13 +47,12 @@ Please also install other required packages when there is any missing (see detai
 
 Data source: https://www.digitalrocksportal.org/projects/372
 
-Features used to characterize the geometry of the void space are studied to predict permeability. These features include single phase mfp, electrical properties elec_uz, and geometric properties like MIS_3D, e_domain, tOf_L, tOf_R. These features are explained as follows.
+Features used to characterize the geometry of the void space are studied to predict permeability. These features include single phase mfp, electrical properties elec_uz, and geometric properties like MIS_3D, e_domain, tOf_L, tOf_R. These features are explained as follows. 
 
 **Single phase flow:mfp**
 
-Porosity. The porosity of a sample refers to the ratio of void space to the overall sample size (solid + void). The porosity of a sample is an established, oft-used structural descriptor of the void space. However, summarizing an entire heterogeneous structure with one averaged, floating point number is an oversimplification in most cases. Nevertheless, because the local porosity is one of the main factors influencing flow, we included the porosity of each slice in the z-direction. This feature is a 3D map that describes the percentage of the void volume of each slice available for flow.
-
-<div align=center><img src="https://github.com/LeeGorden/PoreFlow/assets/72702872/a5bc3beb-f80d-49c6-b08b-b4e1dd5d90a6" width="200px" alt="3D plots of a binary image with its corresponding electric potential simulation results and the streamline plot from the single-phase fluid flow simulation."></div>div>
+Porosity. The porosity of a sample refers to the ratio of void space to the overall sample size (solid + void). The porosity of a sample is an established, oft-used structural descriptor of the void space. However, summarizing an entire heterogeneous structure with one averaged, floating point number is an oversimplification in most cases. Nevertheless, because the local porosity is one of the main factors influencing flow, we included the porosity of each slice in the z-direction. This feature is a 3D map that describes the percentage of the void volume of each slice available for flow. The following figure is 3D plots of a binary image with its corresponding electric potential simulation results and the streamline plot from the single-phase fluid flow simulation.
+<div align=center><img src="https://github.com/LeeGorden/PoreFlow/assets/72702872/a5bc3beb-f80d-49c6-b08b-b4e1dd5d90a6" width="500px"></div>
 
 **Electrostatic simulations: elec_uz**
 
@@ -73,6 +72,8 @@ They are **Time of flight maps from left to right**. We used the fast marching a
 All of the 6 features described above have a dimension of 256 × 256 × 256. Then, these 6 features are concatenated into a six-channel 3D cube as data input, shown as follows.
 
 ![image](https://github.com/LeeGorden/PoreFlow/assets/72702872/57295728-3adb-4629-8ade-d1cf7f23b181)
+
+For more detail of the dataset, please go to: https://www.nature.com/articles/s41597-022-01664-0.
 
 <h2 id="proposed-framework"> Proposed Framework</h2>
   
