@@ -47,12 +47,22 @@ Please also install other required packages when there is any missing (see detai
 
 Data source: https://www.digitalrocksportal.org/projects/372
 
+Understanding and quantifying the influence of porous structures on transport processes requires focusing on key properties such as permeability and electrical conductivity. These properties determine how easily fluids flow through the medium and how well electrical current conducts, making them crucial for modeling, design and a nuanced understanding of the underlying physics (Wark
+et al., 1998; Gostick et al., 2016; and Daigle et al., 2020). Despite efforts to establish relationships based on descriptors like porosity (Figure 7) creating a universal model remains a formidable challenge (Santos et al., 2022). Effective properties of our dataset vs porosity is displayed as follow.
+
+<div align=center><img src="https://github.com/LeeGorden/PoreFlow/assets/72702872/34920818-1638-4460-b4fe-689718a358db" width="800px"></div>
+
 Features used to characterize the geometry of the void space are studied to predict permeability. These features include single phase mfp, electrical properties elec_uz, and geometric properties like MIS_3D, e_domain, tOf_L, tOf_R. These features are explained as follows. 
 
 **Single phase flow:mfp**
 
-Porosity. The porosity of a sample refers to the ratio of void space to the overall sample size (solid + void). The porosity of a sample is an established, oft-used structural descriptor of the void space. However, summarizing an entire heterogeneous structure with one averaged, floating point number is an oversimplification in most cases. Nevertheless, because the local porosity is one of the main factors influencing flow, we included the porosity of each slice in the z-direction. This feature is a 3D map that describes the percentage of the void volume of each slice available for flow. The following figure is 3D plots of a binary image with its corresponding electric potential simulation results and the streamline plot from the single-phase fluid flow simulation.
-<div align=center><img src="https://github.com/LeeGorden/PoreFlow/assets/72702872/a5bc3beb-f80d-49c6-b08b-b4e1dd5d90a6" width="500px"></div>
+Porosity. The porosity of a sample refers to the ratio of void space to the overall sample size (solid + void). The porosity of a sample is an established, oft-used structural descriptor of the void space. However, summarizing an entire heterogeneous structure with one averaged, floating point number is an oversimplification in most cases. Nevertheless, because the local porosity is one of the main factors influencing flow, we included the porosity of each slice in the z-direction. This feature is a 3D map that describes the percentage of the void volume of each slice available for flow. The following figure shows a cross-section of one sample under different confinement pressures. As such, this dataset presents opportunities to study how permeability and low channels are affected by pore scale as nano-confinement sets in.
+
+<div align=center><img src="https://github.com/LeeGorden/PoreFlow/assets/72702872/a07e92dd-dcf9-4ff6-a4e9-fd3043bdc36f" width="800px"></div>
+
+The following figure is 3D plots of a binary image with its corresponding electric potential simulation results and the streamline plot from the single-phase fluid flow simulation.
+
+<div align=center><img src="https://github.com/LeeGorden/PoreFlow/assets/72702872/97974695-2229-4f0a-b033-2e92579a5575" width="500px"></div>
 
 **Electrostatic simulations: elec_uz**
 
@@ -61,37 +71,39 @@ Quantification of electrical behavior in porous media has supported advancements
 **elec_uz.**
 Electrical conductivity is a fundamental property of a material that quantifies how strongly it conducts electric current, where high conductivity values mean that the material readily allows current to flow. Similar to permeability, the overall electrical response of subsurface geosystems is subject to rock formation processes and subsequent diagenesis. The conductivity is primarily impacted by the topology of the conductive phase structures. Specifically, conductivity measurements capture the effects of the sinuous transport path of the connected pore space (tortuosity) and variations in the cross-sectional area of the conducting paths (constriction factor). Heterogeneities created by these processes create conductive pathways on a range of length scales similar to that of fluid flow. However, behavior at the nano- and micron-scales arguably has a more profound impact on the macroscopic (regional scale) response for electrical properties than for fluid flow. Therefore, geometric characterization of these small-scale features is crucial for inferring electrical properties on larger scales.
 
-**Geometrical features: MIS_3D, e_domain, tOf_L, tOf_R**
-Binary images of porous materials are an important input for applications like direct simulation of physical processes. But, a 3D binary image by itself provides limited information about its overall geometric characteristics. There are many metrics that are commonly computed to characterize the structure of binary images of porous material. In this dataset, there are 10 geometrical features from each binary images described in the previous section and 4 of them are finally chosen in model. These features represent different aspects of the local and global topology of the original structure. These features serve as proxies for better descriptors of binary images of porous media (pore size distribution, tortuosity, local porosity), which are often used to describe sample populations. Furthermore, these features have been used as inputs for machine learning models to study a wide variety of relationships between structure and bulk properties of porous media. The features are grouped in the following categories:
+**Geometrical features**
+Binary images of porous materials are an important input for applications like direct simulation of physical processes. But, a 3D binary image by itself provides limited information about its overall geometric characteristics. There are many metrics that are commonly computed to characterize the structure of binary images of porous material. In this dataset, there are 10 geometrical features from each binary images described in the previous section and 4 of them are finally chosen in model. These features represent different aspects of the local and global topology of the original structure. These features serve as proxies for better descriptors of binary images of porous media (pore size distribution, tortuosity, local porosity), which are often used to describe sample populations. Furthermore, these features have been used as inputs for machine learning models to study a wide variety of relationships between structure and bulk properties of porous media. Examples of four of the computed geometrical features in the dataset is as follows.
+
+<div align=center><img src="https://github.com/LeeGorden/PoreFlow/assets/72702872/33ddafb7-ddc4-4046-bd3e-e200fabb3fa9" width="400px"></div>
+
+The features are grouped in the following categories:
 
 **tOf_L, tOf_R.**
 They are **Time of flight maps from left to right**. We used the fast marching algorithm to compute the shortest distance of all the points of the domain to a plane source (In this case, both of the the XY-planes at the first and last slice, individually). This method solves the boundary value problem of the Eikonal equation. The output provides a 3D map which (1) explains how tortuous a path is (or how much a path deviates from a straight line) in the z-direction, (2) conversely also highlights the easiest paths (or highways) for flow, and (3) describes how connected the domain is overall.
 
-<div align=center><img src="https://github.com/LeeGorden/PoreFlow/assets/72702872/b7d4518c-b8c8-4444-9af1-e802f92f5dbb" width="200px">
+**For more detail of the dataset, please go to: https://www.nature.com/articles/s41597-022-01664-0.**
 
-All of the 6 features described above have a dimension of 256 × 256 × 256. Then, these 6 features are concatenated into a six-channel 3D cube as data input, shown as follows.
+**All of the 6 features described above (mfp, elec_uz, MIS_3D, e_domain, tOf_L, tOf_R) have a dimension of 256 × 256 × 256. Then, these 6 features are concatenated into a six-channel 3D cube as data input, shown as follows.**
 
-![image](https://github.com/LeeGorden/PoreFlow/assets/72702872/57295728-3adb-4629-8ade-d1cf7f23b181)
-
-For more detail of the dataset, please go to: https://www.nature.com/articles/s41597-022-01664-0.
+<div align=center><img src="https://github.com/LeeGorden/PoreFlow/assets/72702872/57295728-3adb-4629-8ade-d1cf7f23b181" width="500px"></div>
 
 <h2 id="proposed-framework"> Proposed Framework</h2>
   
 For predicting permeability, in the model structure section, the encoder of Swin Transformer proposed by Liu, Z. et al., (2021) is chosen. The encoder of Swin Transformer is chosen because traditional transformer has limitations regarding the length of sequences, in this case the number of 3D points in the 3D cube, especially when considering the resources consumption will increase significantly when object dimension increases from 2D to 3D. The idea of using successive window and shifted-window successively to aggregate self-attention-based information instead of global self-attention-based information aggregation is the core of reducing complexity.
 
 The Swin Transformer Encoder backbone has been applied in solving 3D object detection, segmentation, and classification. (Cao, H.  et al. 2022; Tang, Y. et al. 2022; Hatamizadeh, A. et al. 2022). We inherit the encoder structure of 3D Medical Image Segmentation conducted by Hatamizadeh, A. et al. (2022), as shown in the following figure. We use the patch size of  8 × 8 × 8 instead of the original patch size of 4 × 4 × 4 in order to absorb more diverse geological information.
-  
-![image](https://github.com/LeeGorden/PoreFlow/assets/72702872/fbf7d647-95b9-4064-8e92-2a404b15b84c)
+
+<div align=center><img src="https://github.com/LeeGorden/PoreFlow/assets/72702872/fbf7d647-95b9-4064-8e92-2a404b15b84c" width="700px"></div>
 
 <h2 id="experiment-result"> Experiment result</h2>
 
 - Model performance:
-  
-  ![image](https://github.com/LeeGorden/PoreFlow/assets/72702872/05d700ce-d1c4-4f12-9f5d-275daffd8c33)
+
+  <div align=center><img src="https://github.com/LeeGorden/PoreFlow/assets/72702872/05d700ce-d1c4-4f12-9f5d-275daffd8c33" width="700px"></div>
 
 - Ablation analysis:
 
-  ![image](https://github.com/LeeGorden/PoreFlow/assets/72702872/4275aa67-aee1-4463-8a45-48c204b4d763)
+  <div align=center><img src="https://github.com/LeeGorden/PoreFlow/assets/72702872/4275aa67-aee1-4463-8a45-48c204b4d763" width="500px"></div>
 
 <h2 id="acknowledgements"> Acknowledgements</h2>
 
