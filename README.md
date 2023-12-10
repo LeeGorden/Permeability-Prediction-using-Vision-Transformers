@@ -49,6 +49,12 @@ Data source: https://www.digitalrocksportal.org/projects/372
 
 Features used to characterize the geometry of the void space are studied to predict permeability. These features include single phase mfp, electrical properties elec_uz, and geometric properties like MIS_3D, e_domain, tOf_L, tOf_R. These features are explained as follows.
 
+**Single phase flow:mfp**
+
+Porosity. The porosity of a sample refers to the ratio of void space to the overall sample size (solid + void). The porosity of a sample is an established, oft-used structural descriptor of the void space. However, summarizing an entire heterogeneous structure with one averaged, floating point number is an oversimplification in most cases. Nevertheless, because the local porosity is one of the main factors influencing flow, we included the porosity of each slice in the z-direction. This feature is a 3D map that describes the percentage of the void volume of each slice available for flow.
+
+<div align=center><img src="https://github.com/LeeGorden/PoreFlow/assets/72702872/a5bc3beb-f80d-49c6-b08b-b4e1dd5d90a6" width="200px" alt="3D plots of a binary image with its corresponding electric potential simulation results and the streamline plot from the single-phase fluid flow simulation."></div>div>
+
 **Electrostatic simulations: elec_uz**
 
 Quantification of electrical behavior in porous media has supported advancements in petroleum reservoir characterization, CO2 monitoring in carbon capture and storage, hydrogeology, mineral exploration, and battery development. In these composite systems, electrical conductivity measurements aid in inferring the composition of the material and its phase distributions. For example, in petroleum systems, well-bore resistivity (reciprocal of conductivity) measurements are commonly used to estimate the amount of oil in place in the reservoir rock.
@@ -62,7 +68,7 @@ Binary images of porous materials are an important input for applications like d
 **tOf_L, tOf_R.**
 They are **Time of flight maps from left to right**. We used the fast marching algorithm to compute the shortest distance of all the points of the domain to a plane source (In this case, both of the the XY-planes at the first and last slice, individually). This method solves the boundary value problem of the Eikonal equation. The output provides a 3D map which (1) explains how tortuous a path is (or how much a path deviates from a straight line) in the z-direction, (2) conversely also highlights the easiest paths (or highways) for flow, and (3) describes how connected the domain is overall.
 
-![image](https://github.com/LeeGorden/PoreFlow/assets/72702872/b7d4518c-b8c8-4444-9af1-e802f92f5dbb)
+<div align=center><img src="https://github.com/LeeGorden/PoreFlow/assets/72702872/b7d4518c-b8c8-4444-9af1-e802f92f5dbb" width="200px">
 
 All of the 6 features described above have a dimension of 256 × 256 × 256. Then, these 6 features are concatenated into a six-channel 3D cube as data input, shown as follows.
 
