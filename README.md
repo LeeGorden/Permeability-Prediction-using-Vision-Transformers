@@ -85,7 +85,7 @@ They are **Time of flight maps from left to right**. We used the fast marching a
 
 **All of the 6 features described above (mfp, elec_uz, MIS_3D, e_domain, tOf_L, tOf_R) have a dimension of 256 × 256 × 256. Then, these 6 features are concatenated into a six-channel 3D cube as data input, shown as follows.**
 
-<div align=center><img src="https://github.com/LeeGorden/PoreFlow/assets/72702872/57295728-3adb-4629-8ade-d1cf7f23b181" width="500px"></div>
+<div align=center><img src="https://github.com/LeeGorden/PoreFlow/assets/72702872/57295728-3adb-4629-8ade-d1cf7f23b181" width="700px"></div>
 
 <h2 id="proposed-framework"> Proposed Framework</h2>
   
