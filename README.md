@@ -52,26 +52,31 @@ et al., 1998; Gostick et al., 2016; and Daigle et al., 2020). Despite efforts to
 
 <div align=center><img src="https://github.com/LeeGorden/PoreFlow/assets/72702872/34920818-1638-4460-b4fe-689718a358db" width="800px"></div>
 
-Features used to characterize the geometry of the void space are studied to predict permeability. These features include single phase mfp, electrical properties elec_uz, and geometric properties like MIS_3D, e_domain, tOf_L, tOf_R. These features are explained as follows. 
+Features used to characterize the geometry of the void space are studied to predict permeability. These features include **single phase** mfp, **electrical simulation properties** elec_uz, and **geometric properties** like MIS_3D, e_domain, tOf_L, tOf_R. These features are explained as follows. 
 
-**mfp-normalized mean free path**
+**Single phase flow**
 
-Porosity. The porosity of a sample refers to the ratio of void space to the overall sample size (solid + void). The porosity of a sample is an established, oft-used structural descriptor of the void space. However, summarizing an entire heterogeneous structure with one averaged, floating point number is an oversimplification in most cases. Nevertheless, because the local porosity is one of the main factors influencing flow, we included the porosity of each slice in the z-direction. This feature is a 3D map that describes the percentage of the void volume of each slice available for flow. The following figure shows a cross-section of one sample under different confinement pressures. As such, this dataset presents opportunities to study how permeability and low channels are affected by pore scale as nano-confinement sets in.
+The breadth of length scales in a porous media system can spread from features that range from pores as small as a few Angstroms across to fractures on the centimeter scale. These scales encompass flow regimes dominated by diferent physical processes, from free-molecular fow to viscous-dominated flow. Since the dataset contains samples across length scales, it is important that we take into account accurate fluid flow physics that encompasses the length scales of interest.
+
+**mfp-normalized mean free path.**
+Fluid flow within systems that have nanoscale features differs from systems at larger length scales. At the nanoscale, the classical definition of fuid viscosity breaks down because the length of the travel path of a fluid molecule prior to colliding with other molecules (mean free path) is comparable to the length of the pore system. To simulate samples at diferent scales, we use the local viscosity to capture how the mean free path is affected in a confned system. Additionally, we provide the value of the normalized mean free path, which ranges from zero (no confnement efects) to one. The following figure shows a cross-section of one sample under diferent confnement pressures. As such, this dataset presents opportunities to study how permeability and low channels are affected by pore scale as nano-confnement sets in. 
 
 <div align=center><img src="https://github.com/LeeGorden/PoreFlow/assets/72702872/a07e92dd-dcf9-4ff6-a4e9-fd3043bdc36f" width="800px"></div>
 
-The following figure is 3D plots of a binary image with its corresponding electric potential simulation results and the streamline plot from the single-phase fluid flow simulation.
+The bottom panel shows a cross-section of the nanoconfined simulation at five different pressures. The normalized velocity (with respect to the maximum value) contours are shown. It is visible that the sample at the lowest pressure (1 MPa) presents the higher degree of slip, shown as “fat“ velocity profile (fewer contour lines), while the one at 20 MPa exhibits no slip. This can also be seen in the top panels, where normalized mean free path (that could be interpreted as the deviation from the Navier-Stokes solution) is shown.
 
-<div align=center><img src="https://github.com/LeeGorden/PoreFlow/assets/72702872/97974695-2229-4f0a-b033-2e92579a5575" width="500px"></div>
+A 3D schematic of the velocity streamlines of a sample can be seen in the following figure regarding 3D plots of a binary image with its corresponding electric potential simulation results and the streamline plot from the single-phase fuid fow simulation. These results could be representative of a wide variety of systems; batteries, catalysers, shale formations, pavements, among others.
 
-**Electrostatic simulations: elec_uz**
+<div align=center><img src="https://github.com/LeeGorden/PoreFlow/assets/72702872/a64d55d4-cbc2-4866-894c-5bb9497cfce7" width="600px"></div>
+
+**Electrostatic simulations**
 
 Quantification of electrical behavior in porous media has supported advancements in petroleum reservoir characterization, CO2 monitoring in carbon capture and storage, hydrogeology, mineral exploration, and battery development. In these composite systems, electrical conductivity measurements aid in inferring the composition of the material and its phase distributions. For example, in petroleum systems, well-bore resistivity (reciprocal of conductivity) measurements are commonly used to estimate the amount of oil in place in the reservoir rock.
 
 **elec_uz-z_component of electric current (fow direction).**
 Electrical conductivity is a fundamental property of a material that quantifies how strongly it conducts electric current, where high conductivity values mean that the material readily allows current to flow. Similar to permeability, the overall electrical response of subsurface geosystems is subject to rock formation processes and subsequent diagenesis. The conductivity is primarily impacted by the topology of the conductive phase structures. Specifically, conductivity measurements capture the effects of the sinuous transport path of the connected pore space (tortuosity) and variations in the cross-sectional area of the conducting paths (constriction factor). Heterogeneities created by these processes create conductive pathways on a range of length scales similar to that of fluid flow. However, behavior at the nano- and micron-scales arguably has a more profound impact on the macroscopic (regional scale) response for electrical properties than for fluid flow. Therefore, geometric characterization of these small-scale features is crucial for inferring electrical properties on larger scales.
 
-**Geometrical features: MIS_3D, e_domain, tOf_L, tOf_R**
+**Geometrical features**
 
 Binary images of porous materials are an important input for applications like direct simulation of physical processes. But, a 3D binary image by itself provides limited information about its overall geometric characteristics. There are many metrics that are commonly computed to characterize the structure of binary images of porous material. In this dataset, there are 10 geometrical features from each binary images described in the previous section and 4 of them are finally chosen in model. These features represent different aspects of the local and global topology of the original structure. These features serve as proxies for better descriptors of binary images of porous media (pore size distribution, tortuosity, local porosity), which are often used to describe sample populations. Furthermore, these features have been used as inputs for machine learning models to study a wide variety of relationships between structure and bulk properties of porous media. Examples of four of the computed geometrical features in the dataset is as follows.
 
