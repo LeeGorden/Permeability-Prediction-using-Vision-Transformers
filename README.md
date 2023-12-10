@@ -47,7 +47,18 @@ Please also install other required packages when there is any missing (see detai
 
 Data source: https://www.digitalrocksportal.org/projects/372
 
-Features used to characterize the geometry of the void space are studied to predict permeability. These features include single phase mfp, electrical properties elec_uz, and geometric properties like MIS_3D, e_domain, tOf_L, tOf_R.   Each of the 6 features has a dimension of 256 × 256 × 256. Then, these 6 features are concatenated into a six-channel 3D cube as data input, shown as follows.
+Features used to characterize the geometry of the void space are studied to predict permeability. These features include single phase mfp, electrical properties elec_uz, and geometric properties like MIS_3D, e_domain, tOf_L, tOf_R. These features are explained as follows.
+
+**Geometrical features**
+Binary images of porous materials are an important input for applications like direct simulation of physical processes. But, a 3D binary image by itself provides limited information about its overall geometric characteristics. There are many metrics that are commonly computed to characterize the structure of binary images of porous material. In this dataset, there are 10 geometrical features from each binary images described in the previous section and 4 of them are finally chosen in model. These features represent different aspects of the local and global topology of the original structure. These features serve as proxies for better descriptors of binary images of porous media (pore size distribution, tortuosity, local porosity), which are often used to describe sample populations. Furthermore, these features have been used as inputs for machine learning models to study a wide variety of relationships between structure and bulk properties of porous media. The features are grouped in the following categories:
+**MIS_3D**
+**e_domain**
+**tOf_L, tOf_R**
+They are **Time of flight maps from left to right**. We used the fast marching algorithm to compute the shortest distance of all the points of the domain to a plane source (In this case, both of the the XY-planes at the first and last slice, individually). This method solves the boundary value problem of the Eikonal equation. The output provides a 3D map which (1) explains how tortuous a path is (or how much a path deviates from a straight line) in the z-direction, (2) conversely also highlights the easiest paths (or highways) for flow, and (3) describes how connected the domain is overall.
+
+![image](https://github.com/LeeGorden/PoreFlow/assets/72702872/b7d4518c-b8c8-4444-9af1-e802f92f5dbb)
+
+All of the 6 features described above have a dimension of 256 × 256 × 256. Then, these 6 features are concatenated into a six-channel 3D cube as data input, shown as follows.
 
 ![image](https://github.com/LeeGorden/PoreFlow/assets/72702872/57295728-3adb-4629-8ade-d1cf7f23b181)
 
