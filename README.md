@@ -54,7 +54,7 @@ et al., 1998; Gostick et al., 2016; and Daigle et al., 2020). Despite efforts to
 
 Features used to characterize the geometry of the void space are studied to predict permeability. These features include single phase mfp, electrical properties elec_uz, and geometric properties like MIS_3D, e_domain, tOf_L, tOf_R. These features are explained as follows. 
 
-**Single phase flow: mfp**
+**mfp-normalized mean free path**
 
 Porosity. The porosity of a sample refers to the ratio of void space to the overall sample size (solid + void). The porosity of a sample is an established, oft-used structural descriptor of the void space. However, summarizing an entire heterogeneous structure with one averaged, floating point number is an oversimplification in most cases. Nevertheless, because the local porosity is one of the main factors influencing flow, we included the porosity of each slice in the z-direction. This feature is a 3D map that describes the percentage of the void volume of each slice available for flow. The following figure shows a cross-section of one sample under different confinement pressures. As such, this dataset presents opportunities to study how permeability and low channels are affected by pore scale as nano-confinement sets in.
 
@@ -68,7 +68,7 @@ The following figure is 3D plots of a binary image with its corresponding electr
 
 Quantification of electrical behavior in porous media has supported advancements in petroleum reservoir characterization, CO2 monitoring in carbon capture and storage, hydrogeology, mineral exploration, and battery development. In these composite systems, electrical conductivity measurements aid in inferring the composition of the material and its phase distributions. For example, in petroleum systems, well-bore resistivity (reciprocal of conductivity) measurements are commonly used to estimate the amount of oil in place in the reservoir rock.
 
-**elec_uz.**
+**elec_uz-z_component of electric current (fow direction).**
 Electrical conductivity is a fundamental property of a material that quantifies how strongly it conducts electric current, where high conductivity values mean that the material readily allows current to flow. Similar to permeability, the overall electrical response of subsurface geosystems is subject to rock formation processes and subsequent diagenesis. The conductivity is primarily impacted by the topology of the conductive phase structures. Specifically, conductivity measurements capture the effects of the sinuous transport path of the connected pore space (tortuosity) and variations in the cross-sectional area of the conducting paths (constriction factor). Heterogeneities created by these processes create conductive pathways on a range of length scales similar to that of fluid flow. However, behavior at the nano- and micron-scales arguably has a more profound impact on the macroscopic (regional scale) response for electrical properties than for fluid flow. Therefore, geometric characterization of these small-scale features is crucial for inferring electrical properties on larger scales.
 
 **Geometrical features: MIS_3D, e_domain, tOf_L, tOf_R**
@@ -79,8 +79,14 @@ Binary images of porous materials are an important input for applications like d
 
 The features are grouped in the following categories:
 
-**tOf_L, tOf_R.**
-They are **Time of flight maps from left to right**. We used the fast marching algorithm to compute the shortest distance of all the points of the domain to a plane source (In this case, both of the the XY-planes at the first and last slice, individually). This method solves the boundary value problem of the Eikonal equation. The output provides a 3D map which (1) explains how tortuous a path is (or how much a path deviates from a straight line) in the z-direction, (2) conversely also highlights the easiest paths (or highways) for flow, and (3) describes how connected the domain is overall.
+**MIS_3D-maximum inscribed sphere.** 
+Spheres are commonly used in porous media applications due to their well defined geometrical properties and accurate approximations that they can provide for different phenomena. Maximum inscribed sphere is a map with the largest sphere that can be inscribed anywhere in the void space. This map provides a 3D representation of the overall pore size distribution of the sample (tightest throats and largest pores), which tend to be of first order influence for flow. Another feature is a porosimetry experiment. This map is a simplified representation of a non-wetting fluid injection in the direction of flow. Although this map is typically used to describe two-phase flow, it could also act as a measure of geometry (pore sizes) and topology (connectivity to neighboring pore structures of similar size). The map provides information about the local pore space characteristics as well as the global boundaries. It acts as a bridge between the whole domain and its local regions.
+ 
+**edomain-Euclidean distance of the pore space in all three coordinate directions.**
+The Euclidean distance of the pore-space in three coordinate directions (or distance transform) labels an image with the distance (in number of pixels) to the nearest solid wall. This distance maps are commonly used as inputs for 3D convolutional neural network models.
+
+**tOf_L-time of fight from the lef boundary (inlet), tOf_R-time of fight from the right boundary (outlet).**
+We used the fast marching algorithm to compute the shortest distance of all the points of the domain to a plane source (In this case, both of the the XY-planes at the first and last slice, individually). This method solves the boundary value problem of the Eikonal equation. The output provides a 3D map which (1) explains how tortuous a path is (or how much a path deviates from a straight line) in the z-direction, (2) conversely also highlights the easiest paths (or highways) for flow, and (3) describes how connected the domain is overall.
 
 **For more detail of the dataset, please go to: https://www.nature.com/articles/s41597-022-01664-0.**
 
