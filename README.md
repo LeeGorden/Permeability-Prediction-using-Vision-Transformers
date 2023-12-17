@@ -10,7 +10,7 @@ Implementation of Swin-Transformer based permeability prediction on 3D object.
 <li><a href="#dataset-preparation"> Dataset Preparation</a></li>
 <li><a href="#proposed-framework"> Proposed framework</a></li>
 <li><a href="#experiment-result"> Experiment result</a></li>
-<li><a href="#useage"> Useage</a></li>
+<li><a href="#usage"> Usage</a></li>
 <li><a href="#acknowledgements"> Acknowledgements</a></li>
 <li><a href="#contributors"> Contributors</a></li>
 
@@ -121,9 +121,21 @@ The Swin Transformer Encoder backbone has been applied in solving 3D object dete
 
   <div align=center><img src="https://github.com/LeeGorden/PoreFlow/assets/72702872/4275aa67-aee1-4463-8a45-48c204b4d763" width="500px"></div>
 
-<h2 id="useage"> Useage</h2>
+<h2 id="usage"> Usage</h2>
 
-Download the data in https://www.digitalrocksportal.org/projects/372, and prepare the data in data/analysis and run data_preprocess.ipynb. To be notified, this step is not necessary. As long as user provide data meta info csv file listed in data/data_route and input correct param with path pointing to those training samples in train.py, then it's fine.
+Download the data in https://www.digitalrocksportal.org/projects/372, and prepare the data in **data/analysis** and **run data_preprocess.ipynb**. To be notified, this step is not necessary. As long as user **provide data meta info csv file listed in data/data_route and input correct param with path pointing to those training samples in train.py**, then it's fine.
+
+**For training the model**.
+
+    python train.py
+
+**For predicting**.
+
+    python predict.py
+
+**For performance_evaluation**.  eg: demo as test_performance_eval.ipynb
+
+    run test_performance_eval.ipynb with corresponding path to the model trained.
 
 <h2 id="acknowledgements"> Acknowledgements</h2>
 
