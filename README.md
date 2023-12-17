@@ -42,6 +42,10 @@ Please also install other required packages when there is any missing (see detai
       ├── data_preprocess.ipynb
       ├── predict.py
       ├── train.py
+    ├── data
+      ├── analysis
+      ├── data_model
+      ├── data_route
     
 <h2 id="dataset-preparation"> Dataset Preparation</h2>
 
@@ -118,17 +122,8 @@ The Swin Transformer Encoder backbone has been applied in solving 3D object dete
   <div align=center><img src="https://github.com/LeeGorden/PoreFlow/assets/72702872/4275aa67-aee1-4463-8a45-48c204b4d763" width="500px"></div>
 
 <h2 id="useage"> Useage</h2>
-Download the data in https://www.digitalrocksportal.org/projects/372, 
-    .
-    ├── src
-      ├── model
-        ├── vit_model.py
-      ├── utils
-        ├── my_dataset.py 
-        ├── utils.py   
-      ├── data_preprocess.ipynb
-      ├── predict.py
-      ├── train.py
+
+Download the data in https://www.digitalrocksportal.org/projects/372, and prepare the data in data/analysis and run data_preprocess.ipynb. To be notified, this step is not necessary. As long as user provide data meta info csv file listed in data/data_route and input correct param with path pointing to those training samples in train.py, then it's fine.
 
 <h2 id="acknowledgements"> Acknowledgements</h2>
 
