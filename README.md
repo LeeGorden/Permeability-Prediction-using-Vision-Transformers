@@ -6,8 +6,8 @@ Implementation of Swin-Transformer based permeability prediction on 3D object.
 ## List of Contents
 <li><a href="#introduction"> Introduction</a></li>
 <li><a href="#prerequisites set up"> Prerequisites set up</a></li>
-<li><a href="#folder-structure"> Folder Structure</a></li>
-<li><a href="#dataset-preparation"> Dataset Preparation</a></li>
+<li><a href="#folder-structure"> Folder structure</a></li>
+<li><a href="#dataset-preparation"> Dataset preparation</a></li>
 <li><a href="#proposed-framework"> Proposed framework</a></li>
 <li><a href="#experiment-result"> Experiment result</a></li>
 <li><a href="#usage"> Usage</a></li>
@@ -29,7 +29,7 @@ The following open source packages are mainly used in this project:
 
 Please also install other required packages when there is any missing (see detailed package uses in .py files)
 
-<h2 id="folder-structure"> Folder Structure</h2>
+<h2 id="folder-structure"> Folder structure</h2>
 
     code
     .
@@ -47,7 +47,7 @@ Please also install other required packages when there is any missing (see detai
       ├── data_model
       ├── data_route
     
-<h2 id="dataset-preparation"> Dataset Preparation</h2>
+<h2 id="dataset-preparation"> Dataset preparation</h2>
 
 Data source: https://www.digitalrocksportal.org/projects/372
 
@@ -103,7 +103,7 @@ We used the fast marching algorithm to compute the shortest distance of all the 
 
 <div align=center><img src="https://github.com/LeeGorden/PoreFlow/assets/72702872/57295728-3adb-4629-8ade-d1cf7f23b181" width="700px"></div>
 
-<h2 id="proposed-framework"> Proposed Framework</h2>
+<h2 id="proposed-framework"> Proposed framework</h2>
   
 For predicting permeability, in the model structure section, the encoder of Swin Transformer proposed by Liu, Z. et al., (2021) is chosen. The encoder of Swin Transformer is chosen because traditional transformer has limitations regarding the length of sequences, in this case the number of 3D points in the 3D cube, especially when considering the resources consumption will increase significantly when object dimension increases from 2D to 3D. The idea of using successive window and shifted-window successively to aggregate self-attention-based information instead of global self-attention-based information aggregation is the core of reducing complexity.
 
